@@ -39,9 +39,9 @@ public class TelaPrincipal
     {
         Console.Clear();
 
-        Console.WriteLine("----------------------------------------");
-        Console.WriteLine("|        Gestão de Equipamentos        |");
-        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("------------------------------------------");
+        Console.WriteLine("|        Controle de Medicamentos        |");
+        Console.WriteLine("------------------------------------------");
 
         Console.WriteLine();
 
