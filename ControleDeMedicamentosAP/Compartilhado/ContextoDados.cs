@@ -1,7 +1,10 @@
-﻿
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using System.Text.Json;
 using ControleDeMedicamentosAP.ModuloFornecedor;
+using ControleDeMedicamentosAP.ModuloFuncionario;
+using ControleDeMedicamentosAP.ModuloMedicamento;
+using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+
 
 namespace ControleDeMedicamentosAP.Compartilhada;
 
@@ -10,11 +13,14 @@ public class ContextoDados
     private string pastaArmazenamento = "C:\\temp";
     private string arquivoArmazenamento = "dados.json";
 
-    public List<Fornecedor> Fornecedores { get; set; }
+    public List<Fornecedor> Fornecedores { get; set; }    
+
+    public List<Medicamento> Medicamentos { get; set; }
 
     public ContextoDados()
     {
-        Fornecedores = new List<Fornecedor>();
+        Fornecedores = new List<Fornecedor>();        
+        Medicamentos = new List<Medicamento>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -56,7 +62,8 @@ public class ContextoDados
 
         if (contextoArmazenado == null) return;
 
-        this.Fornecedores = contextoArmazenado.Fornecedores;
+        this.Fornecedores = contextoArmazenado.Fornecedores;        
+        this.Medicamentos = contextoArmazenado.Medicamentos;
         
         
     }

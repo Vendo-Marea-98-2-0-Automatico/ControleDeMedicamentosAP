@@ -16,7 +16,7 @@ namespace ControleDeMedicamentosAP.ModuloFuncionario
 
         protected override List<Funcionario> ObterRegistros()
         {
-            return contexto.Funcionarios;
+            return new List<Funcionario>();
         }
     }
 }
