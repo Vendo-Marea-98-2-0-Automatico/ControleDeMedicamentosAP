@@ -1,4 +1,5 @@
-﻿using ControleDeMedicamentosAP.Util;
+﻿using ControleDeMedicamentosAP.ModuloFornecedor;
+using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -17,37 +18,6 @@ namespace ControleDeMedicamentosAP.ModuloFuncionario
             this.repositorioFuncionario = repositorioFuncionario;
         }
 
-        public override void VisualizarRegistros(bool exibirTitulo)
-        {
-            if (exibirTitulo)
-                ExibirCabecalho();
-
-            Console.WriteLine("Visualizando todos os Funcionários...");
-            Console.WriteLine("---------------------------------------");
-
-            Console.WriteLine();
-
-            Console.WriteLine(
-           "{0, -6} | {1, -20} | {2, -30} | {3, -30}",
-           "Id", "Nome", "Telefone", "CPF"
-       );
-
-            List<Funcionario> registros = repositorioFuncionario.SelecionarRegistros();
-
-            foreach (var f in registros)
-            {
-                Console.WriteLine(
-                    "{0, -6} | {1, -20} | {2, -30} | {3, -30}",
-                    f.Id, f.Nome, f.Telefone, f.CPF
-                );
-            }
-
-            Console.WriteLine();
-
-            Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
-        
-        }
-
         public override Funcionario ObterDados()
         {
             Console.WriteLine("Digite o Nome do Funcionário: ");
@@ -62,6 +32,17 @@ namespace ControleDeMedicamentosAP.ModuloFuncionario
             Funcionario funcionario = new Funcionario(nome, telefone, cpf);
 
             return funcionario;
+
+        }
+
+        protected override void ExibirCabecalhoTabela()
+        {
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Nome", "Telefone", "CPF");
+        }
+
+        protected override void ExibirLinhaTabela(Funcionario funcionario)
+        {
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", funcionario.Id, funcionario.Nome, funcionario.Telefone, funcionario.CPF);
         }
     }
 }
