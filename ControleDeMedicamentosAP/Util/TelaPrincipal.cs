@@ -1,4 +1,5 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
+using ControleDeMedicamentosAP.ModuloFornecedor;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 
 
@@ -14,15 +15,20 @@ public class TelaPrincipal
     
     private ContextoDados contexto;
 
+    private TelaFornecedor telaFornecedor;
+
 
     public TelaPrincipal()
     {
         this.contexto = new ContextoDados(true);
-        /*this.repositorioFabricante = new RepositorioFabricanteEmArquivo(contexto);
-        this.repositorioEquipamento = new RepositorioEquipamentoEmArquivo(contexto);
-        this.repositorioChamado = new RepositorioChamadoEmArquivo(contexto);  repositórios
+
+        IRepositorioFornecedor repositorioFornecedor = new RepositorioFornecedorEmArquivo(contexto);
+
+        telaFornecedor = new TelaFornecedor(repositorioFornecedor);
         
-         */ 
+        /*this.repositorioEquipamento = new RepositorioEquipamentoEmArquivo(contexto);
+        this.repositorioChamado = new RepositorioChamadoEmArquivo(contexto);  repositórios*/       
+      
     }
 
     public void ApresentarMenuPrincipal()
@@ -35,28 +41,28 @@ public class TelaPrincipal
 
         Console.WriteLine();
 
-        Console.WriteLine("1 - Controle de Fabricantes");
-        Console.WriteLine("2 - Controle de Equipamentos");
-        Console.WriteLine("3 - Controle de Chamados");
+        Console.WriteLine("1 - Controle de Fornecedores");
+        Console.WriteLine("2 - Controle de ");
+        Console.WriteLine("3 - Controle de ");
         Console.WriteLine("S - Sair");
 
         Console.WriteLine();
 
         Console.Write("Escolha uma das opções: ");
-        opcaoPrincipal = Console.ReadLine()[0];
+        opcaoPrincipal = Console.ReadLine()![0];
     }
 
      public ITelaCrud ObterTela()
     {
-        /*if (opcaoPrincipal == '1')
-            return new TelaFabricante(repositorioFabricante);
+        if (opcaoPrincipal == '1')
+            return telaFornecedor;
 
-        else if (opcaoPrincipal == '2')
+        /*else if (opcaoPrincipal == '2')
             return new TelaEquipamento(repositorioEquipamento, repositorioFabricante);
 
         else if (opcaoPrincipal == '3')
             return new TelaChamado(repositorioChamado, repositorioEquipamento);
         */
-        return null;
+        return null!;
     }
 }

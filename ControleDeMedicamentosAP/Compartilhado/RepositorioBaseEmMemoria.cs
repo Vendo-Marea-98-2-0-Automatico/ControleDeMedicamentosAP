@@ -54,6 +54,6 @@ public abstract class RepositorioBaseEmMemoria<T> where T : EntidadeBase<T>
                 return item;
         }
       
-        return null;
+        return null!;
     }
 }

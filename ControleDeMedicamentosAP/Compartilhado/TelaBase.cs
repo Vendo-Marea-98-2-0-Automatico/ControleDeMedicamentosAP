@@ -141,7 +141,28 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
         Notificador.ExibirMensagem("O registro foi excluído com sucesso!", ConsoleColor.Green);
     }
 
-    public abstract void VisualizarRegistros(bool exibirTitulo);
+    public void VisualizarRegistros(bool exibirTitulo)
+    {
+        if (exibirTitulo)
+            ExibirCabecalho();
 
+        Console.WriteLine($"Visualizando {nomeEntidade}s...");
+        Console.WriteLine("-------------------------------------------");
+
+        Console.WriteLine();
+
+        ExibirCabecalhoTabela();
+
+        List<T> registros = repositorio.SelecionarRegistros();
+
+        foreach (T registro in registros)
+            ExibirLinhaTabela(registro);
+
+        Console.WriteLine();
+
+        Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
+    }
     public abstract T ObterDados();
+    protected abstract void ExibirCabecalhoTabela();
+    protected abstract void ExibirLinhaTabela(T registro); 
 }
