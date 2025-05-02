@@ -1,5 +1,6 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
 using ControleDeMedicamentosAP.ModuloFornecedor;
+using ControleDeMedicamentosAP.ModuloFuncionario;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 
 
@@ -17,17 +18,20 @@ public class TelaPrincipal
 
     private TelaFornecedor telaFornecedor;
 
+    private TelaFuncionario telaFuncionario;
+
 
     public TelaPrincipal()
     {
         this.contexto = new ContextoDados(true);
 
         IRepositorioFornecedor repositorioFornecedor = new RepositorioFornecedorEmArquivo(contexto);
-
         telaFornecedor = new TelaFornecedor(repositorioFornecedor);
+
+        IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioEmArquivo(contexto);
+        telaFuncionario = new TelaFuncionario(repositorioFuncionario);
         
-        /*this.repositorioEquipamento = new RepositorioEquipamentoEmArquivo(contexto);
-        this.repositorioChamado = new RepositorioChamadoEmArquivo(contexto);  repositórios*/       
+           
       
     }
 
@@ -42,8 +46,13 @@ public class TelaPrincipal
         Console.WriteLine();
 
         Console.WriteLine("1 - Controle de Fornecedores");
-        Console.WriteLine("2 - Controle de ");
-        Console.WriteLine("3 - Controle de ");
+        Console.WriteLine("2 - Controle de Pacientes");
+        Console.WriteLine("3 - Controle de Medicamentos ");
+        Console.WriteLine("4 - Controle de Funcionários");
+        Console.WriteLine("5 - Requisições de Saída");
+        Console.WriteLine("6 - Requisições de Entrada");
+        Console.WriteLine("7 - Controle de Prescrições");
+        Console.WriteLine();
         Console.WriteLine("S - Sair");
 
         Console.WriteLine();
@@ -57,12 +66,27 @@ public class TelaPrincipal
         if (opcaoPrincipal == '1')
             return telaFornecedor;
 
-        /*else if (opcaoPrincipal == '2')
-            return new TelaEquipamento(repositorioEquipamento, repositorioFabricante);
+        else if (opcaoPrincipal == '2')
+            Environment.Exit(0);
 
         else if (opcaoPrincipal == '3')
-            return new TelaChamado(repositorioChamado, repositorioEquipamento);
-        */
+            Environment.Exit(0);
+
+        else if (opcaoPrincipal == '4')
+            return telaFuncionario;
+
+        else if (opcaoPrincipal == '5')
+            Environment.Exit(0);
+
+        else if (opcaoPrincipal == '6')
+            Environment.Exit(0);
+
+        else if (opcaoPrincipal == '7')
+            Environment.Exit(0);
+
+        else if (opcaoPrincipal == 'S')
+            Environment.Exit(0);
+
         return null!;
     }
 }
