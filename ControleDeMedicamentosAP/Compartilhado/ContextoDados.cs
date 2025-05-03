@@ -69,6 +69,8 @@ public class ContextoDados
 
         this.Fornecedores = contextoArmazenado.Fornecedores;        
         this.Medicamentos = contextoArmazenado.Medicamentos;
+        this.Funcionarios = contextoArmazenado.Funcionarios;
+        this.Entradas = contextoArmazenado.Entradas;
         
         
     }
