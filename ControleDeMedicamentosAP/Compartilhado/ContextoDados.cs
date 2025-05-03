@@ -4,6 +4,7 @@ using ControleDeMedicamentosAP.ModuloFornecedor;
 using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentosAP.ModuloEntrada;
 using ControleDeMedicamentosAP.ModuloPaciente;
 
 
@@ -15,6 +16,9 @@ public class ContextoDados
     private string arquivoArmazenamento = "dados.json";
 
     public List<Fornecedor> Fornecedores { get; set; }    
+    public List<Medicamento> Medicamentos { get; set; }
+    public List<Funcionario> Funcionarios { get; set; }
+    public List<Entrada> Entradas { get; set; }
 
     public List<Medicamento> Medicamentos { get; set; }
     public List<Paciente> Pacientes { get;  set; }
@@ -23,6 +27,8 @@ public class ContextoDados
     {
         Fornecedores = new List<Fornecedor>();        
         Medicamentos = new List<Medicamento>();
+        Funcionarios = new List<Funcionario>();
+        Entradas = new List<Entrada>();
         Pacientes = new List<Paciente>();
     }
 

@@ -1,4 +1,5 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
+using ControleDeMedicamentosAP.ModuloEntrada;
 using ControleDeMedicamentosAP.ModuloFornecedor;
 using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
@@ -25,6 +26,8 @@ public class TelaPrincipal
     private TelaMedicamento telaMedicamento;
 
     private TelaPaciente telaPaciente;
+    private TelaEntrada telaEntrada;
+
 
     public TelaPrincipal()
     {
@@ -37,6 +40,13 @@ public class TelaPrincipal
         telaFuncionario = new TelaFuncionario(repositorioFuncionario);
 
         IRepositorioMedicamento repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
+        telaMedicamento = new TelaMedicamento(repositorioMedicamento);
+
+        IRepositorioEntrada repositorioEntrada = new RepositorioEntradaEmArquivo(contexto);
+        telaEntrada = new TelaEntrada(repositorioEntrada, repositorioFuncionario, repositorioMedicamento);
+
+           
+      
         telaMedicamento = new TelaMedicamento(repositorioMedicamento);
 
         IRepositorioPaciente repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
