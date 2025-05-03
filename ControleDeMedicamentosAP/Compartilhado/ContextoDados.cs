@@ -4,6 +4,7 @@ using ControleDeMedicamentosAP.ModuloFornecedor;
 using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentosAP.ModuloPaciente;
 
 
 namespace ControleDeMedicamentosAP.Compartilhada;
@@ -16,11 +17,13 @@ public class ContextoDados
     public List<Fornecedor> Fornecedores { get; set; }    
 
     public List<Medicamento> Medicamentos { get; set; }
+    public List<Paciente> Pacientes { get;  set; }
 
     public ContextoDados()
     {
         Fornecedores = new List<Fornecedor>();        
         Medicamentos = new List<Medicamento>();
+        Pacientes = new List<Paciente>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -64,6 +67,7 @@ public class ContextoDados
 
         this.Fornecedores = contextoArmazenado.Fornecedores;        
         this.Medicamentos = contextoArmazenado.Medicamentos;
+        this.Pacientes = contextoArmazenado.Pacientes;
         
         
     }
