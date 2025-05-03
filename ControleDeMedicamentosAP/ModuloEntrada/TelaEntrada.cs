@@ -54,13 +54,13 @@ namespace ControleDeMedicamentosAP.ModuloEntrada
 
         protected override void ExibirCabecalhoTabela()
         {
-            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Medicamento", "Funcionario", "Quantidade");
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -30}", "Id", "Medicamento", "Funcionario", "Quantidade", "Data da Requisição");
 
         }
 
         protected override void ExibirLinhaTabela(Entrada entrada)
         {
-            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", entrada.Id, entrada.Medicamento, entrada.Funcionario, entrada.Quantidade);
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -30}", entrada.Id, entrada.Medicamento, entrada.Funcionario, entrada.Quantidade, entrada.DataRequisicao);
         }
 
         public void VisualizarMedicamentos()
