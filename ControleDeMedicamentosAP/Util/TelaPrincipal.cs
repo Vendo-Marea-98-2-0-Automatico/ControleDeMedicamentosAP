@@ -3,6 +3,7 @@ using ControleDeMedicamentosAP.ModuloEntrada;
 using ControleDeMedicamentosAP.ModuloFornecedor;
 using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
+using ControleDeMedicamentosAP.ModuloPaciente;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 
 
@@ -24,6 +25,7 @@ public class TelaPrincipal
 
     private TelaMedicamento telaMedicamento;
 
+    private TelaPaciente telaPaciente;
     private TelaEntrada telaEntrada;
 
 
@@ -43,6 +45,12 @@ public class TelaPrincipal
         IRepositorioEntrada repositorioEntrada = new RepositorioEntradaEmArquivo(contexto);
         telaEntrada = new TelaEntrada(repositorioEntrada, repositorioFuncionario, repositorioMedicamento);
 
+           
+      
+        telaMedicamento = new TelaMedicamento(repositorioMedicamento);
+
+        IRepositorioPaciente repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
+        telaPaciente = new TelaPaciente(repositorioPaciente);
            
       
     }
@@ -79,7 +87,7 @@ public class TelaPrincipal
             return telaFornecedor;
 
         else if (opcaoPrincipal == '2')
-            Environment.Exit(0);
+            return telaPaciente;
 
         else if (opcaoPrincipal == '3')
             return telaMedicamento;
