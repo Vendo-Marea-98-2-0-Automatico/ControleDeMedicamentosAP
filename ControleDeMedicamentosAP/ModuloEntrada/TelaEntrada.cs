@@ -41,7 +41,7 @@ namespace ControleDeMedicamentosAP.ModuloEntrada
 
             Funcionario funcionarioSelecionado = (Funcionario)repositorioFuncionario.SelecionarRegistroPorId(idFuncionario);
 
-            Console.WriteLine("Digite a Quantidade de Medicamentos a ser (não sei): ");
+            Console.WriteLine("Digite a Quantidade de Medicamentos a serem requiridos: ");
             int qtdDeMedicamentos = int.Parse(Console.ReadLine());
 
             Entrada entrada = new Entrada(medicamentoSelecionado, funcionarioSelecionado, qtdDeMedicamentos);
@@ -90,7 +90,7 @@ namespace ControleDeMedicamentosAP.ModuloEntrada
         
         public void AtualizarEstoque(Medicamento medicamentoSelecionado, int qtdDeMedicamentos)
         {
-            medicamentoSelecionado.QuantidadeMedicamento =- qtdDeMedicamentos;
+            medicamentoSelecionado.QuantidadeMedicamento =+ qtdDeMedicamentos;
         }
         
         
