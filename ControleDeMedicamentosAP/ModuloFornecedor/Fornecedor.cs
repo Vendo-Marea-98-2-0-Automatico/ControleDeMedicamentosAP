@@ -39,6 +39,9 @@ public class Fornecedor : EntidadeBase<Fornecedor>
 
         if (string.IsNullOrWhiteSpace(Nome))
             erros += "O campo 'Nome' é obrigatório.\n";
+        if (Nome.Length < 3 || Nome.Length > 100)
+            erros += "O campo 'Nome' deve possuir de 3 a 100 caracteres.\n";
+        
         if (string.IsNullOrWhiteSpace(Telefone))
             erros += "O campo 'Telefone' é obrigatório.\n";
 
