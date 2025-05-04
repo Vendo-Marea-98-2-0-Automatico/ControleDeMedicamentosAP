@@ -10,7 +10,6 @@ public class Medicamento : EntidadeBase<Medicamento>
     public int QuantidadeMedicamento { get; set; }
     public Fornecedor Fornecedor { get; set; }
     public Medicamento() { }
-
     public Medicamento(string nome, string descricao, int quantidadeMedicamento, Fornecedor fornecedor)
     {
         Nome = nome;
@@ -18,14 +17,12 @@ public class Medicamento : EntidadeBase<Medicamento>
         QuantidadeMedicamento = quantidadeMedicamento;
         Fornecedor = fornecedor;
     }
-
     public override void AtualizarRegistro(Medicamento registroEditado)
     {
         Nome = registroEditado.Nome;
         Descricao = registroEditado.Descricao;
         QuantidadeMedicamento = registroEditado.QuantidadeMedicamento;
     }
-
     public override string Validar()
     {
         string erros = "";

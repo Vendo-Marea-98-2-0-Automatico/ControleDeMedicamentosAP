@@ -1,4 +1,5 @@
-﻿using ControleDeMedicamentosAP.Util;
+﻿using ControleDeMedicamentosAP.ModuloMedicamento;
+using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 
 namespace ControleDeMedicamentosAP
@@ -26,6 +27,13 @@ namespace ControleDeMedicamentosAP
                     case '3': telaSelecionada.ExcluirRegistro(); break;
 
                     case '4': telaSelecionada.VisualizarRegistros(true); break;
+
+                    case '5':
+                        if (telaSelecionada is TelaMedicamento telaMedicamento)
+                            telaMedicamento.ReporEstoqueMedicamento();
+                        else
+                            Notificador.ExibirMensagem("Essa opção não está disponível para o módulo selecionado.", ConsoleColor.Red);
+                        break;
 
                     default: break;
                 }
