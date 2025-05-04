@@ -30,20 +30,7 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaCrud
 
         Fornecedor fornecedorSelecionado = (Fornecedor)repositorioFornecedor.SelecionarRegistroPorId(idFornecedor);
 
-        Medicamento medicamentoExistente = ((RepositorioMedicamentoEmArquivo)repositorio).SelecionarPorNome(nome);
-
-        if (medicamentoExistente != null)
-        {
-            medicamentoExistente.QuantidadeMedicamento += qtdMedicamento;
-            Notificador.ExibirMensagem("Medicamento já cadastrado. Quantidade de medicamentos atualizada!", ConsoleColor.Green);
-            return null!;
-        }
-
         Medicamento novoMedicamento = new Medicamento(nome, descricao, qtdMedicamento, fornecedorSelecionado);
-
-        string statusValidacao = novoMedicamento.Validar();
-
-        repositorio.CadastrarRegistro(novoMedicamento);
 
         return novoMedicamento;        
     }
