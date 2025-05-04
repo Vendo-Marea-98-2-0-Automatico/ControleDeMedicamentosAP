@@ -15,11 +15,7 @@ namespace ControleDeMedicamentosAP.Util;
 public class TelaPrincipal
 {
     private char opcaoPrincipal;
-    /*private IRepositorioFabricante repositorioFabricante;
-    private IRepositorioEquipamento repositorioEquipamento;
-    private IRepositorioChamado repositorioChamado;   interfaces
-    */
-    
+   
     private ContextoDados contexto;
 
     private TelaFornecedor telaFornecedor;
