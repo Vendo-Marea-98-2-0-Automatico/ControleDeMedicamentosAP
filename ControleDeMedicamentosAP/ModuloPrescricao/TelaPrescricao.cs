@@ -79,6 +79,29 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
         {
             Console.WriteLine($"{registro.Id} | {registro.CrmMedico} | {registro.Data:dd/MM/yyyy} | {registro.Medicamentos.Count}");
         }
+
+        public void VisualizarMedicamentos()
+        {
+            Console.WriteLine();
+
+            Console.WriteLine("Visualizando Medicamentos...");
+            Console.WriteLine("--------------------------------------------");
+
+            Console.WriteLine();
+
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Nome", "Descrição", "Quantidade Medicamentos");
+
+            List<Medicamento> registros = repositorioMedicamento.SelecionarRegistros();
+
+            foreach (var e in registros)
+            {
+                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id, e.Nome, e.Descricao, e.QuantidadeMedicamento);
+            }
+
+            Console.WriteLine();
+
+            Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
+        }
     }
     //public bool ExisteCartaoSUS(string cartaoSus);
 }
