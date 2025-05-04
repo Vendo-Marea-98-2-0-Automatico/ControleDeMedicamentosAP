@@ -1,7 +1,6 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
 using ControleDeMedicamentosAP.ModuloFornecedor;
 using ControleDeMedicamentosAP.ModuloFuncionario;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
 
 public class Medicamento : EntidadeBase<Medicamento>
@@ -10,6 +9,8 @@ public class Medicamento : EntidadeBase<Medicamento>
     public string Descricao { get; set; }
     public int QuantidadeMedicamento { get; set; }
     public Fornecedor Fornecedor { get; set; }
+    public Medicamento() { }
+
     public Medicamento(string nome, string descricao, int quantidadeMedicamento, Fornecedor fornecedor)
     {
         Nome = nome;
@@ -24,6 +25,7 @@ public class Medicamento : EntidadeBase<Medicamento>
         Descricao = registroEditado.Descricao;
         QuantidadeMedicamento = registroEditado.QuantidadeMedicamento;
     }
+
     public override string Validar()
     {
         string erros = "";
@@ -37,7 +39,7 @@ public class Medicamento : EntidadeBase<Medicamento>
             erros += "O campo 'Descrição' deve possuir de 5 a 255 caracteres.\n";
 
         if (QuantidadeMedicamento <= 0)
-            erros += "A quantidade de medicamentos a ser cadastrada deve ser maior que 0 e positivo.\n";
+            erros += "A quantidade de medicamentos a ser cadastrada deve ser maior que 0 e positiva.\n";
 
         return erros.Trim();
     }
