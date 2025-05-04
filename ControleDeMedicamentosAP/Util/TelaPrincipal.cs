@@ -99,7 +99,7 @@ public class TelaPrincipal
             Environment.Exit(0);
 
         else if (opcaoPrincipal == '6')
-            Environment.Exit(0);
+            return telaEntrada;
 
         else if (opcaoPrincipal == '7')
             Environment.Exit(0);

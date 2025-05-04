@@ -1,12 +1,15 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
 using System.Reflection.Metadata;
+using System.Text.RegularExpressions;
 
 namespace ControleDeMedicamentosAP.ModuloFornecedor;
 
 
 public class Fornecedor : EntidadeBase<Fornecedor>
 {
-    public string Nome {  get; set; }
+    private static List<string> cnpjsCadastrado = new List<string>();
+
+    public string Nome { get; set; }
 
     public string Telefone { get; set; }
 
@@ -23,7 +26,11 @@ public class Fornecedor : EntidadeBase<Fornecedor>
     {
         Nome = registroEditado.Nome;
         Telefone = registroEditado.Telefone;
+        
+        cnpjsCadastrado.Remove(CNPJ);
         CNPJ = registroEditado.CNPJ;
+        if (!cnpjsCadastrado.Contains(CNPJ))
+            cnpjsCadastrado.Add(CNPJ);
     }
 
     public override string Validar()
@@ -34,8 +41,22 @@ public class Fornecedor : EntidadeBase<Fornecedor>
             erros += "O campo 'Nome' é obrigatório.\n";
         if (string.IsNullOrWhiteSpace(Telefone))
             erros += "O campo 'Telefone' é obrigatório.\n";
+
+        string padraoTelefone = @"\(?\d{2}\)?\s?9?\d{4}-?\d{4}";
+
+        if (!Regex.IsMatch(Telefone, padraoTelefone))
+            erros += "O campo 'Telefone' não está formatado corretamente.\n";
+
         if (string.IsNullOrWhiteSpace(CNPJ))
             erros += "O campo 'CNPJ' é obrigatório.\n";
+
+        if (CNPJ.Length != 14)
+            erros += "O campo 'CNPJ' precisa ter 14 dígitos.\n";
+
+        if (cnpjsCadastrado.Contains(CNPJ))
+            erros += "O campo 'CNPJ' só permite uma única entrada.\n";
+        else
+            cnpjsCadastrado.Add(CNPJ);
 
         return erros.Trim();
     }
