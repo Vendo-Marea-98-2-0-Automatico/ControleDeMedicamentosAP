@@ -8,8 +8,7 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
 {
     protected string nomeEntidade;
     private IRepositorio<T> repositorio;
-    private IRepositorio<Prescricao> repositorioPrescricao;
-    protected IRepositorio<T> repositorio;
+    
 
     protected TelaBase(string nomeEntidade, IRepositorio<T> repositorio)
     {
@@ -17,10 +16,7 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
         this.repositorio = repositorio;
     }
 
-    protected TelaBase(IRepositorio<Prescricao> repositorioPrescricao)
-    {
-        this.repositorioPrescricao = repositorioPrescricao;
-    }
+   
 
     public void ExibirCabecalho()
     {
