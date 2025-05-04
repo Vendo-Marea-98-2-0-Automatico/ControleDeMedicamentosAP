@@ -40,14 +40,12 @@ public class TelaPrincipal
         telaFuncionario = new TelaFuncionario(repositorioFuncionario);
 
         IRepositorioMedicamento repositorioMedicamento = new RepositorioMedicamentoEmArquivo(contexto);
-        telaMedicamento = new TelaMedicamento(repositorioMedicamento);
+        telaMedicamento = new TelaMedicamento(repositorioMedicamento, repositorioFornecedor);
 
         IRepositorioEntrada repositorioEntrada = new RepositorioEntradaEmArquivo(contexto);
-        telaEntrada = new TelaEntrada(repositorioEntrada, repositorioFuncionario, repositorioMedicamento);
-
-           
+        telaEntrada = new TelaEntrada(repositorioEntrada, repositorioFuncionario, repositorioMedicamento);           
       
-        telaMedicamento = new TelaMedicamento(repositorioMedicamento);
+        telaMedicamento = new TelaMedicamento(repositorioMedicamento, repositorioFornecedor);
 
         IRepositorioPaciente repositorioPaciente = new RepositorioPacienteEmArquivo(contexto);
         telaPaciente = new TelaPaciente(repositorioPaciente);
@@ -99,7 +97,7 @@ public class TelaPrincipal
             Environment.Exit(0);
 
         else if (opcaoPrincipal == '6')
-            Environment.Exit(0);
+            return telaEntrada;
 
         else if (opcaoPrincipal == '7')
             Environment.Exit(0);

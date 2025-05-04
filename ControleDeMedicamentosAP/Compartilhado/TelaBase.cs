@@ -9,6 +9,7 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
     protected string nomeEntidade;
     private IRepositorio<T> repositorio;
     private IRepositorio<Prescricao> repositorioPrescricao;
+    protected IRepositorio<T> repositorio;
 
     protected TelaBase(string nomeEntidade, IRepositorio<T> repositorio)
     {
