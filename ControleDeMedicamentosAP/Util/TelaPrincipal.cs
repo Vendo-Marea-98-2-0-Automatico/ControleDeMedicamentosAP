@@ -5,6 +5,7 @@ using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.ModuloPrescricao;
+using ControleDeMedicamentosAP.ModuloSaida;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using System.Runtime.CompilerServices;
 
@@ -33,6 +34,8 @@ public class TelaPrincipal
 
     private TelaPrescricao telaPrescricao;
 
+    private TelaSaida telaSaida;
+
 
     public TelaPrincipal()
     {
@@ -55,6 +58,9 @@ public class TelaPrincipal
 
         IRepositorioPrescricao repositorioPrescricao = new RepositorioPrescricaoEmArquivo(contexto);
         telaPrescricao = new TelaPrescricao(repositorioPrescricao, repositorioPaciente, repositorioMedicamento, repositorioFuncionario);
+
+        IRepositorioSaida repositorioSaida = new RepositorioSaidaEmArquivo(contexto);
+        telaSaida = new TelaSaida(repositorioSaida, repositorioPaciente, repositorioPrescricao, repositorioMedicamento);
            
       
     }
@@ -100,13 +106,13 @@ public class TelaPrincipal
             return telaFuncionario;
 
         else if (opcaoPrincipal == '5')
-            Environment.Exit(0);
+            return telaSaida;
 
         else if (opcaoPrincipal == '6')
             return telaEntrada;
 
         else if (opcaoPrincipal == '7')
-            Environment.Exit(0);
+            return telaPrescricao;
 
         else if (opcaoPrincipal == 'S')
             Environment.Exit(0);
