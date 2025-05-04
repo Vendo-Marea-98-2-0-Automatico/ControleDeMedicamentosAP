@@ -5,6 +5,7 @@ namespace ControleDeMedicamentosAP.ModuloPaciente
 {
     internal class TelaPaciente : TelaBase<Paciente>, ITelaCrud
     {
+
         public TelaPaciente( IRepositorioPaciente repositorio) : base("Paciente", repositorio)
         {
         }

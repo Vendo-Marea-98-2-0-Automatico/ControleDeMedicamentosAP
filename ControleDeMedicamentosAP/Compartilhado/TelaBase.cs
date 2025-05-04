@@ -1,4 +1,5 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
+using ControleDeMedicamentosAP.ModuloPrescricao;
 using ControleDeMedicamentosAP.Util;
 
 namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
@@ -7,11 +8,17 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
 {
     protected string nomeEntidade;
     private IRepositorio<T> repositorio;
+    private IRepositorio<Prescricao> repositorioPrescricao;
 
     protected TelaBase(string nomeEntidade, IRepositorio<T> repositorio)
     {
         this.nomeEntidade = nomeEntidade;
         this.repositorio = repositorio;
+    }
+
+    protected TelaBase(IRepositorio<Prescricao> repositorioPrescricao)
+    {
+        this.repositorioPrescricao = repositorioPrescricao;
     }
 
     public void ExibirCabecalho()
