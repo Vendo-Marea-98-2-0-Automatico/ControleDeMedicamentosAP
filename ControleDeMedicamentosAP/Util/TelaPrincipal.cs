@@ -56,7 +56,7 @@ public class TelaPrincipal
         telaPrescricao = new TelaPrescricao(repositorioPrescricao, repositorioPaciente, repositorioMedicamento, repositorioFuncionario);
 
         IRepositorioSaida repositorioSaida = new RepositorioSaidaEmArquivo(contexto);
-        telaSaida = new TelaSaida(repositorioSaida, repositorioPaciente, repositorioMedicamento);        
+        telaSaida = new TelaSaida(repositorioSaida, repositorioPaciente, repositorioPrescricao, repositorioMedicamento);        
     }
 
     public void ApresentarMenuPrincipal()
