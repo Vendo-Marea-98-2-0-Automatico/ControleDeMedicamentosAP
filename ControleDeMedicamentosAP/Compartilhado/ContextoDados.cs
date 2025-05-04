@@ -7,6 +7,7 @@ using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloEntrada;
 using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.ModuloPrescricao;
+using ControleDeMedicamentosAP.ModuloSaida;
 
 
 namespace ControleDeMedicamentosAP.Compartilhada;
@@ -23,6 +24,8 @@ public class ContextoDados
     public List<Paciente> Pacientes { get;  set; }
     public List<Prescricao> Prescricoes { get; set; }
 
+    public List<Saida> Saidas { get; set; }
+
     public ContextoDados()
     {
         Fornecedores = new List<Fornecedor>();        
@@ -31,6 +34,7 @@ public class ContextoDados
         Entradas = new List<Entrada>();
         Pacientes = new List<Paciente>();
         Prescricoes = new List<Prescricao>();
+        Saidas = new List<Saida>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -78,6 +82,7 @@ public class ContextoDados
         this.Entradas = contextoArmazenado.Entradas;
         this.Pacientes = contextoArmazenado.Pacientes;
         this.Prescricoes = contextoArmazenado.Prescricoes;
+        this.Saidas = contextoArmazenado.Saidas;
         
         
     }

@@ -90,7 +90,7 @@ namespace ControleDeMedicamentosAP.ModuloEntrada
         
         public void AtualizarEstoque(Medicamento medicamentoSelecionado, int qtdDeMedicamentos)
         {
-            medicamentoSelecionado.QuantidadeMedicamento =+ qtdDeMedicamentos;
+            medicamentoSelecionado.QuantidadeMedicamento += qtdDeMedicamentos;
         }
         
         

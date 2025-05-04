@@ -1,0 +1,142 @@
+﻿using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentosAP.ModuloEntrada;
+using ControleDeMedicamentosAP.ModuloMedicamento;
+using ControleDeMedicamentosAP.ModuloPaciente;
+using ControleDeMedicamentosAP.ModuloPrescricao;
+using ControleDeMedicamentosAP.Util;
+using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ControleDeMedicamentosAP.ModuloSaida
+{
+    public class TelaSaida : TelaBase<Saida>, ITelaCrud
+    {
+        public IRepositorioSaida repositorioSaida;
+        public IRepositorioPaciente repositorioPaciente;
+        public IRepositorioPrescricao repositorioPrescricao;
+        public IRepositorioMedicamento repositorioMedicamento;
+
+        public TelaSaida(IRepositorioSaida repositorioSaida, IRepositorioPaciente repositorioPaciente, IRepositorioPrescricao repositorioPrescricao, IRepositorioMedicamento repositorioMedicamento) : base ("Saidas", repositorioSaida)
+        {
+            this.repositorioSaida = repositorioSaida;
+            this.repositorioPaciente = repositorioPaciente;
+            this.repositorioPrescricao = repositorioPrescricao;
+            this.repositorioMedicamento = repositorioMedicamento;
+        }
+
+        public override Saida ObterDados()
+        {
+            VisualizarPacientes();
+
+            Console.WriteLine("Digite o ID do Paciente que deseja selecionar: ");
+            int idPaciente = int.Parse(Console.ReadLine());
+
+            Paciente pacienteSelecionado = (Paciente)repositorioPaciente.SelecionarRegistroPorId(idPaciente);
+
+
+            VisualizarPrescricoes();
+
+            Console.WriteLine("Digite o ID da Prescrição que deseja selecionar: ");
+            int idPresc = int.Parse(Console.ReadLine());
+
+            Prescricao prescSelecionada = (Prescricao)repositorioPrescricao.SelecionarRegistroPorId(idPresc);
+
+            VisualizarMedicamentos();
+
+            Console.WriteLine("Digite o ID do Medicamento que deseja selecionar: ");
+            int idMedicamento = int.Parse(Console.ReadLine());
+
+            Medicamento medicamentoSelecionado = (Medicamento)repositorioMedicamento.SelecionarRegistroPorId(idMedicamento);
+
+            Saida saida = new Saida(pacienteSelecionado, prescSelecionada, medicamentoSelecionado);
+
+            return saida;
+
+           
+        }
+
+        protected override void ExibirCabecalhoTabela()
+        {
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -30}", "Id", "Medicamento", "Paciente", "Prescrição", "Data da Requisição");
+
+        }
+
+        protected override void ExibirLinhaTabela(Saida saida)
+        {
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -30}", saida.Id, saida.Medicamento, saida.Paciente, saida.Prescricao, saida.dataAbertura);
+        }
+
+        public void VisualizarPacientes()
+        {
+            Console.WriteLine();
+
+            Console.WriteLine("Visualizando Pacientes...");
+            Console.WriteLine("--------------------------------------------");
+
+            Console.WriteLine();
+
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Nome", "Telefone", "Nº do Cartao Sus");
+
+            List<Paciente> registros = repositorioPaciente.SelecionarRegistros();
+
+            foreach (var e in registros)
+            {
+                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id, e.Nome, e.Telefone, e.CartaoSus);
+            }
+
+            Console.WriteLine();
+
+            Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
+        }
+
+        public void VisualizarPrescricoes() // depende ainda de prescrições
+        {
+            Console.WriteLine();
+
+            Console.WriteLine("Visualizando Prescrições...");
+            Console.WriteLine("--------------------------------------------");
+
+            Console.WriteLine();
+
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Nome", "Tralaleiro", "Tralala");
+
+            List<Prescricao> registros = repositorioPrescricao.SelecionarRegistros();
+
+            foreach (var e in registros)
+            {
+                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id, e.Nome, e.Telefone, e.CartaoSus);
+            }
+
+            Console.WriteLine();
+
+            Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
+        }
+
+        public void VisualizarMedicamentos()
+        {
+            Console.WriteLine();
+
+            Console.WriteLine("Visualizando Medicamentos...");
+            Console.WriteLine("--------------------------------------------");
+
+            Console.WriteLine();
+
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Nome", "Descrição", "Quantidade Medicamentos");
+
+            List<Medicamento> registros = repositorioMedicamento.SelecionarRegistros();
+
+            foreach (var e in registros)
+            {
+                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id, e.Nome, e.Descricao, e.QuantidadeMedicamento);
+            }
+
+            Console.WriteLine();
+
+            Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
+        }
+    }
+}
