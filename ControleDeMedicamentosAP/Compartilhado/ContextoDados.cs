@@ -82,7 +82,7 @@ public class ContextoDados
         this.Entradas = contextoArmazenado.Entradas;
         this.Pacientes = contextoArmazenado.Pacientes;
         this.Prescricoes = contextoArmazenado.Prescricoes;
-        this.Saidas = contextoArmazenado.Saidas;
+        this.Saidas = contextoArmazenado.Saidas;       
         
         
     }

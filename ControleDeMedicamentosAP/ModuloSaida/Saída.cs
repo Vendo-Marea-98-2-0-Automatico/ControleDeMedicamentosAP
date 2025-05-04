@@ -41,6 +41,5 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
             return erros;
         }
-
     }
 }

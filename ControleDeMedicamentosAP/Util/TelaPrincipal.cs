@@ -32,7 +32,6 @@ public class TelaPrincipal
 
     private TelaSaida telaSaida;
 
-
     public TelaPrincipal()
     {
         this.contexto = new ContextoDados(true);
@@ -105,9 +104,8 @@ public class TelaPrincipal
         else if (opcaoPrincipal == '6')
             return telaEntrada;
 
-        else if (opcaoPrincipal == '7')
-            return null;
-        //return telaPrescricao;
+        else if (opcaoPrincipal == '7')            
+            return telaPrescricao;
 
         else if (opcaoPrincipal == 'S')
             Environment.Exit(0);

@@ -14,9 +14,7 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
     {
         this.nomeEntidade = nomeEntidade;
         this.repositorio = repositorio;
-    }
-
-   
+    }  
 
     public void ExibirCabecalho()
     {
