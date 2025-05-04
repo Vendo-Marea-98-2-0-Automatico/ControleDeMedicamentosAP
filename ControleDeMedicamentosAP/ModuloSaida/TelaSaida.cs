@@ -108,7 +108,7 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
             foreach (var e in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id, e.Nome, e.Telefone, e.CartaoSus);
+                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id );
             }
 
             Console.WriteLine();
