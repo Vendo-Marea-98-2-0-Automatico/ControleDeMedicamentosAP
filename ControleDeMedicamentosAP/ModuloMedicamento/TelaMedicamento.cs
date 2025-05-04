@@ -7,7 +7,7 @@ namespace ControleDeMedicamentosAP.ModuloMedicamento;
 
 public class TelaMedicamento : TelaBase<Medicamento>, ITelaCrud
 {
-    public IRepositorioFornecedor repositorioFornecedor;
+    public IRepositorioFornecedor repositorioFornecedor;    
     public TelaMedicamento(IRepositorio<Medicamento> repositorio, IRepositorioFornecedor repositorioFornecedor) : base("Medicamentos", repositorio)
     {
         this.repositorioFornecedor = repositorioFornecedor;
@@ -26,7 +26,7 @@ public class TelaMedicamento : TelaBase<Medicamento>, ITelaCrud
         VisualizarFornecedores();
 
         Console.Write("Digite o ID do Fornecedor que deseja selecionar: ");
-        int idFornecedor = int.Parse(Console.ReadLine()!);
+        int idFornecedor = int.Parse(Console.ReadLine());
 
         Fornecedor fornecedorSelecionado = (Fornecedor)repositorioFornecedor.SelecionarRegistroPorId(idFornecedor);
 

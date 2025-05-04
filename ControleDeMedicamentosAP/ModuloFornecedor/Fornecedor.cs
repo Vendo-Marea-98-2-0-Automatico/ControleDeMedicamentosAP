@@ -1,6 +1,6 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
-using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
+using ControleDeMedicamentosAP.ModuloMedicamento;
 
 namespace ControleDeMedicamentosAP.ModuloFornecedor;
 
@@ -10,11 +10,10 @@ public class Fornecedor : EntidadeBase<Fornecedor>
     private static List<string> cnpjsCadastrado = new List<string>();
 
     public string Nome { get; set; }
-
     public string Telefone { get; set; }
-
-    public string CNPJ { get; set; }
-
+    public string CNPJ { get; set;}
+    public Fornecedor() { }
+    
     public Fornecedor(string nome, string telefone, string cnpj)
     {
         Nome = nome;

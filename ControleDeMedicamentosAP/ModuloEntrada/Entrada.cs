@@ -11,14 +11,12 @@ namespace ControleDeMedicamentosAP.ModuloEntrada
 {
     public class Entrada : EntidadeBase<Entrada>
     {
-        
-        public Medicamento Medicamento { get; set; }
+
+        public Medicamento Medicamento;
         public Funcionario Funcionario { get; set; }
         public int Quantidade { get; set; }
 
         public DateTime DataRequisicao = DateTime.Now;
-
-
 
         public Entrada (Medicamento medicamento, Funcionario funcionario, int quantidade)
         {

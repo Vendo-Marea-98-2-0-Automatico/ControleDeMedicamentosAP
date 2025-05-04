@@ -6,10 +6,7 @@ namespace ControleDeMedicamentosAP.ModuloMedicamento
 {
     public class RepositorioMedicamentoEmArquivo : RepositorioBaseEmArquivo<Medicamento>, IRepositorioMedicamento
     {
-        public RepositorioMedicamentoEmArquivo(ContextoDados contexto) : base(contexto)
-        {
-        }
-
+        public RepositorioMedicamentoEmArquivo(ContextoDados contexto) : base(contexto) { }
         protected override List<Medicamento> ObterRegistros()
         {
             return new List<Medicamento>();
