@@ -1,7 +1,7 @@
 ﻿using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using GestaoMedica.ConsoleApp.ModuloPrescricao;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace ControleDeMedicamentosAP.ModuloPrescricao
 {
