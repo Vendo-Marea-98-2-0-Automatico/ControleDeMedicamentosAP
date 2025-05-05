@@ -12,13 +12,13 @@ namespace ControleDeMedicamentosAP.ModuloPaciente
 
         public override Paciente ObterDados()
         {
-            Console.WriteLine("Digite o nome do paciente");
+            Console.Write("Digite o nome do paciente: ");
             string nome = Console.ReadLine()?? string.Empty;
 
-            Console.WriteLine("Digite o telefone do paciente");
+            Console.Write("Digite o telefone do paciente: ");
             string telefone = Console.ReadLine()?? string.Empty;
 
-            Console.WriteLine("Digite o número do Cartão SUS do paciente:");
+            Console.Write("Digite o número do Cartão SUS do paciente: ");
             string cartaoSus = Console.ReadLine()?? string.Empty;
 
             Paciente paciente = new Paciente(nome, telefone, cartaoSus);

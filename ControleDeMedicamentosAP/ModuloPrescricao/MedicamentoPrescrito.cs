@@ -1,5 +1,4 @@
 ﻿
-
 using ControleDeMedicamentosAP.Compartilhada;
 
 namespace ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao

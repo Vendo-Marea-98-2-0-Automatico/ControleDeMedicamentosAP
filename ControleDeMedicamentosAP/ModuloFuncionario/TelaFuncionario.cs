@@ -20,13 +20,13 @@ namespace ControleDeMedicamentosAP.ModuloFuncionario
 
         public override Funcionario ObterDados()
         {
-            Console.WriteLine("Digite o Nome do Funcionário: ");
+            Console.Write("Digite o Nome do Funcionário: ");
             string nome = Console.ReadLine() ?? string.Empty;
 
-            Console.WriteLine("Digite o Telefone do Funcionário ((XX) XXXX-XXXX): ");
+            Console.Write("Digite o Telefone do Funcionário ((XX) XXXX-XXXX): ");
             string telefone = Console.ReadLine() ?? string.Empty;
 
-            Console.WriteLine("Digite o CPF do Funcionário (11 dígitos): ");
+            Console.Write("Digite o CPF do Funcionário (11 dígitos): ");
             string cpf = Console.ReadLine() ?? string.Empty;
 
             Funcionario funcionario = new Funcionario(nome, telefone, cpf);

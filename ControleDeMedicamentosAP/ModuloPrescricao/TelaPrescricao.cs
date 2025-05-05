@@ -1,20 +1,25 @@
 ﻿using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao;
 using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloPaciente;
+using ControleDeMedicamentosAP.ModuloSaida;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-using ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao;
 
 
 namespace ControleDeMedicamentosAP.ModuloPrescricao
 {
     public class TelaPrescricao : TelaBase<Prescricao>, ITelaCrud
     {
-        public TelaPrescricao(IRepositorioPrescricao repositorioPrescricao,IRepositorioPaciente repositorioPaciente, IRepositorioMedicamento repositorioMedicamento, IRepositorioFuncionario repositorioFuncionario)
+        public IRepositorioSaida repositorioSaida;
+        public IRepositorioPaciente repositorioPaciente;
+        public IRepositorioPrescricao repositorioPrescricao;
+        public IRepositorioMedicamento repositorioMedicamento;
+        public TelaPrescricao(IRepositorioPrescricao repositorioPrescricao, IRepositorioPaciente repositorioPaciente, IRepositorioMedicamento repositorioMedicamento, IRepositorioFuncionario repositorioFuncionario)
             : base("Prescrição", repositorioPrescricao)
         {
-           
+
         }
 
         public override Prescricao ObterDados()
