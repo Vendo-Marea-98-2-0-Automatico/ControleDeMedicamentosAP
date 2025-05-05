@@ -5,12 +5,18 @@ using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao;
+using ControleDeMedicamentosAP.ModuloSaida;
 
 
 namespace ControleDeMedicamentosAP.ModuloPrescricao
 {
     public class TelaPrescricao : TelaBase<Prescricao>, ITelaCrud
     {
+        public IRepositorioSaida repositorioSaida;
+        public IRepositorioPaciente repositorioPaciente;
+        public IRepositorioPrescricao repositorioPrescricao;
+        public IRepositorioMedicamento repositorioMedicamento;
+
         public TelaPrescricao(IRepositorioPrescricao repositorioPrescricao,IRepositorioPaciente repositorioPaciente, IRepositorioMedicamento repositorioMedicamento, IRepositorioFuncionario repositorioFuncionario)
             : base("Prescrição", repositorioPrescricao)
         {
@@ -43,8 +49,11 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
 
             while (true)
             {
-                Console.Write("Nome do Medicamento: ");
-                string nome = Console.ReadLine() ?? string.Empty;
+                VisualizarMedicamentos();
+                Console.WriteLine("Digite o Id do Medicamento que deseja selecionar: ");
+                int idMedicamento = int.Parse(Console.ReadLine() ?? string.Empty);
+
+                Medicamento medicamentoSelecionado = (Medicamento)repositorioMedicamento.SelecionarRegistroPorId(idMedicamento);
 
                 Console.Write("Dosagem: ");
                 string dosagem = Console.ReadLine() ?? string.Empty;
@@ -59,7 +68,7 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
                     continue;
                 }
 
-                var medicamento = new MedicamentoPrescrito(nome, dosagem, periodo, qtd);
+                var medicamento = new MedicamentoPrescrito(medicamentoSelecionado, dosagem, periodo, qtd);
                 prescricao.Medicamentos.Add(medicamento);
 
                 Console.Write("Adicionar outro medicamento? (s/n): ");

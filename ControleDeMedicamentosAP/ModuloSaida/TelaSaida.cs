@@ -54,6 +54,10 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
             Saida saida = new Saida(pacienteSelecionado, prescSelecionada, medicamentoSelecionado);
 
+            int qtdDeMedicamentos = prescSelecionada.Medicamentos.;
+
+            AtualizarEstoque(medicamentoSelecionado, qtdDeMedicamentos);
+
             return saida;
 
            
@@ -114,6 +118,11 @@ namespace ControleDeMedicamentosAP.ModuloSaida
             Console.WriteLine();
 
             Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
+        }
+
+        public void AtualizarEstoque(Medicamento medicamentoSelecionado, int qtdDeMedicamentos)
+        {
+            medicamentoSelecionado.QuantidadeMedicamento -= qtdDeMedicamentos;
         }
 
         public void VisualizarMedicamentos()
