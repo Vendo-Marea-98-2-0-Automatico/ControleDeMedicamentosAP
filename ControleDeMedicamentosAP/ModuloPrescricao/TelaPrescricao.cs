@@ -1,7 +1,9 @@
 ﻿using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao;
 using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloPaciente;
+using ControleDeMedicamentosAP.ModuloSaida;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentosAP.ModuloSaida;
@@ -19,7 +21,7 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
         public TelaPrescricao(IRepositorioPrescricao repositorioPrescricao,IRepositorioPaciente repositorioPaciente, IRepositorioMedicamento repositorioMedicamento, IRepositorioFuncionario repositorioFuncionario)
             : base("Prescrição", repositorioPrescricao)
         {
-           
+            this.repositorioMedicamento = repositorioMedicamento;
         }
 
         public override Prescricao ObterDados()
@@ -49,7 +51,7 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
             while (true)
             {
                 VisualizarMedicamentos();
-                Console.WriteLine("Digite o Id do Medicamento que deseja selecionar: ");
+                Console.Write("Digite o Id do Medicamento que deseja selecionar: ");
                 int idMedicamento = int.Parse(Console.ReadLine() ?? string.Empty);
 
                 Medicamento medicamentoSelecionado = (Medicamento)repositorioMedicamento.SelecionarRegistroPorId(idMedicamento);
