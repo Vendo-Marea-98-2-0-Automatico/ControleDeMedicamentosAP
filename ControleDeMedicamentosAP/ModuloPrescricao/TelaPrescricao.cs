@@ -4,7 +4,6 @@ using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-using ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao;
 using ControleDeMedicamentosAP.ModuloSaida;
 
 
@@ -58,8 +57,12 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
                 Console.Write("Dosagem: ");
                 string dosagem = Console.ReadLine() ?? string.Empty;
 
+                medicamentoSelecionado.Dosagem = dosagem;
+
                 Console.Write("Período: ");
                 string periodo = Console.ReadLine() ?? string.Empty;
+
+                medicamentoSelecionado.Periodo = periodo;
 
                 Console.Write("Quantidade necessária: ");
                 if (!int.TryParse(Console.ReadLine(), out int qtd) || qtd <= 0)
@@ -68,8 +71,10 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
                     continue;
                 }
 
-                var medicamento = new MedicamentoPrescrito(medicamentoSelecionado, dosagem, periodo, qtd);
-                prescricao.Medicamentos.Add(medicamento);
+                medicamentoSelecionado.QuantidadeMedicamentoPresc = qtd;
+
+                
+                prescricao.Medicamentos.Add(medicamentoSelecionado);
 
                 Console.Write("Adicionar outro medicamento? (s/n): ");
                 if (Console.ReadLine().Trim().ToLower() != "s") break;

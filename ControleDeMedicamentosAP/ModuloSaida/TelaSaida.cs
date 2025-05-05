@@ -45,19 +45,26 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
             Prescricao prescSelecionada = (Prescricao)repositorioPrescricao.SelecionarRegistroPorId(idPresc);
 
-            VisualizarMedicamentos();
+            Saida saida = new Saida(pacienteSelecionado, prescSelecionada);
 
-            Console.WriteLine("Digite o ID do Medicamento que deseja selecionar: ");
-            int idMedicamento = int.Parse(Console.ReadLine());
+            List<Medicamento> qtdDeMedicamentos = prescSelecionada.Medicamentos;
 
-            Medicamento medicamentoSelecionado = (Medicamento)repositorioMedicamento.SelecionarRegistroPorId(idMedicamento);
+            foreach (Medicamento e in qtdDeMedicamentos)
+            {
+                int qtdDeMedicamentosPresc = e.QuantidadeMedicamentoPresc;
 
-            Saida saida = new Saida(pacienteSelecionado, prescSelecionada, medicamentoSelecionado);
+                bool qtdDisponivel = Validar(e);
+                if (!qtdDisponivel)
+                {
+                    Console.WriteLine($"O medicamento {e} não está em estoque\n");
+                    Console.ReadLine();
+                    continue;
+                }
 
-            int qtdDeMedicamentos = prescSelecionada.Medicamentos.;
+                AtualizarEstoque(e, qtdDeMedicamentosPresc);
+            }
 
-            AtualizarEstoque(medicamentoSelecionado, qtdDeMedicamentos);
-
+ 
             return saida;
 
            
@@ -65,13 +72,13 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
         protected override void ExibirCabecalhoTabela()
         {
-            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -30}", "Id", "Medicamento", "Paciente", "Prescrição", "Data da Requisição");
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} ", "Id",  "Paciente", "Prescrição", "Data da Requisição");
 
         }
 
         protected override void ExibirLinhaTabela(Saida saida)
         {
-            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} | {4, -30}", saida.Id, saida.Medicamento, saida.Paciente, saida.Prescricao, saida.dataAbertura);
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", saida.Id, saida.Paciente, saida.Prescricao, saida.dataAbertura);
         }
 
         public void VisualizarPacientes()
@@ -146,6 +153,17 @@ namespace ControleDeMedicamentosAP.ModuloSaida
             Console.WriteLine();
 
             Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
+        }
+
+        public bool Validar(Medicamento medicamento) 
+        {
+            if (medicamento.QuantidadeMedicamento == 0)
+            {
+                return false;
+            }
+
+            return true;
+        
         }
     }
 }
