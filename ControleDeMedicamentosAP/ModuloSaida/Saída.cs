@@ -16,6 +16,11 @@ namespace ControleDeMedicamentosAP.ModuloSaida
         public DateTime dataAbertura = DateTime.Now;
         public Paciente Paciente { get; set; }
         public Prescricao Prescricao { get; set; }
+
+        public Saida()
+        {
+
+        }
         
 
         public Saida(Paciente paciente, Prescricao prescricao)

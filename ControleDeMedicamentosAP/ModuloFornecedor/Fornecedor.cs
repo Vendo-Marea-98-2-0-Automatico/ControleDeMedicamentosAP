@@ -52,7 +52,7 @@ public class Fornecedor : EntidadeBase<Fornecedor>
         if (string.IsNullOrWhiteSpace(CNPJ))
             erros += "O campo 'CNPJ' é obrigatório.\n";
 
-        if (CNPJ.Length != 1)
+        if (CNPJ.Length != 14)
             erros += "O campo 'CNPJ' precisa ter 14 dígitos.\n";
 
         if (cnpjsCadastrado.Contains(CNPJ))
