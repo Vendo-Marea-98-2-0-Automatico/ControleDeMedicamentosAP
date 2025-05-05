@@ -4,7 +4,7 @@ using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-using GestaoMedica.ConsoleApp.ModuloPrescricao;
+using ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao;
 
 
 namespace ControleDeMedicamentosAP.ModuloPrescricao

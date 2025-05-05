@@ -1,11 +1,16 @@
-﻿namespace GestaoMedica.ConsoleApp.ModuloPrescricao
+﻿
+
+using ControleDeMedicamentosAP.Compartilhada;
+
+namespace ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao
 {
     public class MedicamentoPrescrito
     {
-        public string Nome;
-        public string Dosagem;
-        public string Periodo;
-        public int QuantidadeNecessaria;
+        public string Nome { get; set; }
+        public string Dosagem { get; set; }
+        public string Periodo { get; set; }
+        public int QuantidadeNecessaria { get; set; }
+        public MedicamentoPrescrito() { }       
 
         public MedicamentoPrescrito(string nome, string dosagem, string periodo, int quantidade)
         {

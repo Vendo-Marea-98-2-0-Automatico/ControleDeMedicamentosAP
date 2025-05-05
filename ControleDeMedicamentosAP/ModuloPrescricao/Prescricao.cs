@@ -1,5 +1,5 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
-using GestaoMedica.ConsoleApp.ModuloPrescricao;
+using ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao;
 
 namespace ControleDeMedicamentosAP.ModuloPrescricao
 {
@@ -8,7 +8,7 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
         public string CrmMedico { get; set; }
         public DateTime Data { get; set; }
         public List<MedicamentoPrescrito> Medicamentos { get; set; }
-
+        public Prescricao() { }
         public Prescricao(string crmMedico, DateTime data)
         {
             CrmMedico = crmMedico;
