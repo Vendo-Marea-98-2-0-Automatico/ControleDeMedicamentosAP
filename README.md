@@ -3,29 +3,29 @@
 !{}()
 
 ````
-				PROJETO DESENVOLVIDO PELOS ALUNOS
+				   PROJETO DESENVOLVIDO PELOS ALUNOS
 						
-						BRUNO TOFFOL
+						BRUNO DE TOFFOL
 						DANILO CENCI
 						GUSTAVO MATTOS
 
-				DURANTE ACADEMIA DO PROGRAMADOR 2025
+				  DURANTE ACADEMIA DO PROGRAMADOR 2025
 ````
 
 ## Funcionalidades
 
-- Cadastrar médicos, funcionarios e pacientes
+- Cadastrar mÃ©dicos, funcionarios e pacientes
 - Cadastrar medicamentos
 - Entrada de medicamentos
-- Saída de medicamentos
-- Prescrições médicas
+- SaÃ­da de medicamentos
+- PrescriÃ§Ãµes mÃ©dicas
 
 ## Tecnologias Utilizadas
 - C#
 
 - .NET ()
 
-- Programação orientada a objetos
+- ProgramaÃ§Ã£o orientada a objetos
 
 - Estrutura modular (classes separadas por responsabilidade)
 
