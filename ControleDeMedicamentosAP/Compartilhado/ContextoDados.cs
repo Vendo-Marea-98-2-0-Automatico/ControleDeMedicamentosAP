@@ -23,7 +23,6 @@ public class ContextoDados
     public List<Entrada> Entradas { get; set; }    
     public List<Paciente> Pacientes { get;  set; }
     public List<Prescricao> Prescricoes { get; set; }
-
     public List<Saida> Saidas { get; set; }
 
     public ContextoDados()

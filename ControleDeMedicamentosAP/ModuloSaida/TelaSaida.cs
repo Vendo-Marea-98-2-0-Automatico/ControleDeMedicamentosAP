@@ -104,7 +104,7 @@ namespace ControleDeMedicamentosAP.ModuloSaida
             Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
         }
 
-        public void VisualizarPrescricoes() // depende ainda de prescrições
+        public void VisualizarPrescricoes() 
         {
             Console.WriteLine();
 
@@ -113,13 +113,13 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
             Console.WriteLine();
 
-            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Nome", "Tralaleiro", "Tralala");
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Data da Requisição", "CRM do Médico Vigente", "Medicamentos Prescritos");
 
             List<Prescricao> registros = repositorioPrescricao.SelecionarRegistros();
 
             foreach (var e in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id);
+                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id, e.Data, e.CrmMedico, e.Medicamentos);
             }
 
             Console.WriteLine();
