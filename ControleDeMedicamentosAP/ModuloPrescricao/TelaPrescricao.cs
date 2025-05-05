@@ -6,6 +6,7 @@ using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.ModuloSaida;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentosAP.ModuloSaida;
 
 
 namespace ControleDeMedicamentosAP.ModuloPrescricao
@@ -16,7 +17,8 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
         public IRepositorioPaciente repositorioPaciente;
         public IRepositorioPrescricao repositorioPrescricao;
         public IRepositorioMedicamento repositorioMedicamento;
-        public TelaPrescricao(IRepositorioPrescricao repositorioPrescricao, IRepositorioPaciente repositorioPaciente, IRepositorioMedicamento repositorioMedicamento, IRepositorioFuncionario repositorioFuncionario)
+
+        public TelaPrescricao(IRepositorioPrescricao repositorioPrescricao,IRepositorioPaciente repositorioPaciente, IRepositorioMedicamento repositorioMedicamento, IRepositorioFuncionario repositorioFuncionario)
             : base("Prescrição", repositorioPrescricao)
         {
 
@@ -48,14 +50,21 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
 
             while (true)
             {
-                Console.Write("Nome do Medicamento: ");
-                string nome = Console.ReadLine() ?? string.Empty;
+                VisualizarMedicamentos();
+                Console.WriteLine("Digite o Id do Medicamento que deseja selecionar: ");
+                int idMedicamento = int.Parse(Console.ReadLine() ?? string.Empty);
+
+                Medicamento medicamentoSelecionado = (Medicamento)repositorioMedicamento.SelecionarRegistroPorId(idMedicamento);
 
                 Console.Write("Dosagem: ");
                 string dosagem = Console.ReadLine() ?? string.Empty;
 
+                medicamentoSelecionado.Dosagem = dosagem;
+
                 Console.Write("Período: ");
                 string periodo = Console.ReadLine() ?? string.Empty;
+
+                medicamentoSelecionado.Periodo = periodo;
 
                 Console.Write("Quantidade necessária: ");
                 if (!int.TryParse(Console.ReadLine(), out int qtd) || qtd <= 0)
@@ -64,8 +73,10 @@ namespace ControleDeMedicamentosAP.ModuloPrescricao
                     continue;
                 }
 
-                var medicamento = new MedicamentoPrescrito(nome, dosagem, periodo, qtd);
-                prescricao.Medicamentos.Add(medicamento);
+                medicamentoSelecionado.QuantidadeMedicamentoPresc = qtd;
+
+                
+                prescricao.Medicamentos.Add(medicamentoSelecionado);
 
                 Console.Write("Adicionar outro medicamento? (s/n): ");
                 if (Console.ReadLine().Trim().ToLower() != "s") break;
