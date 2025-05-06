@@ -34,10 +34,10 @@ namespace ControleDeMedicamentosAP
                         else
                             Notificador.ExibirMensagem("Essa opção não está disponível para o módulo selecionado.", ConsoleColor.Red);
                         break;
-
                     default: break;
                 }
             }
         }
     }
 }
+

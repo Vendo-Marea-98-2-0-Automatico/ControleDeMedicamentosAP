@@ -109,6 +109,9 @@ public class TelaPrincipal
         else if (opcaoPrincipal == 'S')
             Environment.Exit(0);
 
+        else if (opcaoPrincipal == 's')
+            Environment.Exit(0);
+
         return null!;
     }
 }
