@@ -7,7 +7,6 @@ using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.ModuloPrescricao;
 using ControleDeMedicamentosAP.ModuloSaida;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-using System.Runtime.CompilerServices;
 
 
 namespace ControleDeMedicamentosAP.Util;

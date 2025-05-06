@@ -1,5 +1,4 @@
-﻿using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
-using ControleDeMedicamentosAP.ModuloFornecedor;
+﻿using ControleDeMedicamentosAP.ModuloFornecedor;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 

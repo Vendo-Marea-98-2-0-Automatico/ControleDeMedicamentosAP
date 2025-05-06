@@ -1,5 +1,4 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-
 namespace ControleDeMedicamentosAP.ModuloFornecedor
 {
     public class TelaFornecedor : TelaBase<Fornecedor>, ITelaCrud

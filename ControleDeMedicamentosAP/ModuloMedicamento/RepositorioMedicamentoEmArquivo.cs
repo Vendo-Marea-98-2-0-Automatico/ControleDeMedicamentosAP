@@ -1,6 +1,6 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentosAP.Compartilhada;
-using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentosAP.ModuloMedicamento;
 
 namespace ControleDeMedicamentosAP.ModuloMedicamento
 {

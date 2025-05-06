@@ -3,7 +3,6 @@ using System.Text.Json;
 using ControleDeMedicamentosAP.ModuloFornecedor;
 using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
-using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloEntrada;
 using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.ModuloPrescricao;

@@ -1,5 +1,4 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
-using ControleDeMedicamentosAP.ModuloFuncionario;
 
 namespace ControleDeMedicamentosAP.ModuloFornecedor
 {

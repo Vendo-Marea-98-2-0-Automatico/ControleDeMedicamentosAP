@@ -1,4 +1,4 @@
-﻿using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+﻿using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloEntrada;
 using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloPaciente;
