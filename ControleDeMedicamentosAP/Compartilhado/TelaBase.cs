@@ -33,7 +33,13 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
         Console.WriteLine($"1 - Cadastrar {nomeEntidade}");
         Console.WriteLine($"2 - Editar {nomeEntidade}");
         Console.WriteLine($"3 - Excluir {nomeEntidade}");
-        Console.WriteLine($"4 - Visualizar {nomeEntidade}s");
+        
+        if (nomeEntidade == "Fornecedor")
+        {
+            Console.WriteLine($"4 - Visualizar {nomeEntidade}es");
+
+        } else
+            Console.WriteLine($"4 - Visualizar {nomeEntidade}s");
 
         Console.WriteLine("S - Voltar");
 
@@ -147,8 +153,11 @@ public abstract class TelaBase<T> where T : EntidadeBase<T>
     {
         if (exibirTitulo)
             ExibirCabecalho();
+        if (nomeEntidade == "Fornecedor")
+        Console.WriteLine($"Visualizando {nomeEntidade}es...");
+        else
+            Console.WriteLine($"Visualizando {nomeEntidade}s...");
 
-        Console.WriteLine($"Visualizando {nomeEntidade}s...");
         Console.WriteLine("-------------------------------------------");
 
         Console.WriteLine();
