@@ -2,8 +2,6 @@
 using System.Text.RegularExpressions;
 
 namespace ControleDeMedicamentosAP.ModuloFornecedor;
-
-
 public class Fornecedor : EntidadeBase<Fornecedor>
 {
     private static List<string> cnpjsCadastrado = new List<string>();
