@@ -1,12 +1,9 @@
-﻿using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
-using ControleDeMedicamentosAP.ConsoleApp.ModuloPrescricao;
+﻿using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloFuncionario;
-using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.ModuloSaida;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-using ControleDeMedicamentosAP.ModuloSaida;
 
 
 namespace ControleDeMedicamentosAP.ModuloPrescricao

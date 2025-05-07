@@ -3,7 +3,6 @@ using System.Text.Json;
 using ControleDeMedicamentosAP.ModuloFornecedor;
 using ControleDeMedicamentosAP.ModuloFuncionario;
 using ControleDeMedicamentosAP.ModuloMedicamento;
-using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloEntrada;
 using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.ModuloPrescricao;
@@ -23,7 +22,6 @@ public class ContextoDados
     public List<Entrada> Entradas { get; set; }    
     public List<Paciente> Pacientes { get;  set; }
     public List<Prescricao> Prescricoes { get; set; }
-
     public List<Saida> Saidas { get; set; }
 
     public ContextoDados()

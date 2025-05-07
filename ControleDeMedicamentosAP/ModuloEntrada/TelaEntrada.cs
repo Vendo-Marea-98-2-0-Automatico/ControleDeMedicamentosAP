@@ -1,6 +1,5 @@
-﻿using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+﻿using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloFuncionario;
-using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.Util;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 

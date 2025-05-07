@@ -1,4 +1,4 @@
-﻿using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+﻿using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloEntrada;
 using ControleDeMedicamentosAP.ModuloMedicamento;
 using ControleDeMedicamentosAP.ModuloPaciente;
@@ -8,6 +8,7 @@ using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace ControleDeMedicamentosAP.ModuloSaida
         public IRepositorioPrescricao repositorioPrescricao;
         public IRepositorioMedicamento repositorioMedicamento;
 
-        public TelaSaida(IRepositorioSaida repositorioSaida, IRepositorioPaciente repositorioPaciente, IRepositorioPrescricao repositorioPrescricao, IRepositorioMedicamento repositorioMedicamento) : base ("Saidas", repositorioSaida)
+        public TelaSaida(IRepositorioSaida repositorioSaida, IRepositorioPaciente repositorioPaciente, IRepositorioPrescricao repositorioPrescricao, IRepositorioMedicamento repositorioMedicamento) : base ("Saida", repositorioSaida)
         {
             this.repositorioSaida = repositorioSaida;
             this.repositorioPaciente = repositorioPaciente;
@@ -72,13 +73,13 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
         protected override void ExibirCabecalhoTabela()
         {
-            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} ", "Id",  "Paciente", "Prescrição", "Data da Requisição");
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20} ", "Id",  "Paciente", "Id da Prescrição", "Data da Requisição");
 
         }
 
         protected override void ExibirLinhaTabela(Saida saida)
         {
-            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", saida.Id, saida.Paciente, saida.Prescricao, saida.dataAbertura);
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", saida.Id, saida.Paciente.Nome, saida.Prescricao.Id, saida.dataAbertura);
         }
 
         public void VisualizarPacientes()
@@ -104,7 +105,7 @@ namespace ControleDeMedicamentosAP.ModuloSaida
             Notificador.ExibirMensagem("Pressione ENTER para continuar...", ConsoleColor.DarkYellow);
         }
 
-        public void VisualizarPrescricoes() // depende ainda de prescrições
+        public void VisualizarPrescricoes() 
         {
             Console.WriteLine();
 
@@ -113,13 +114,13 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
             Console.WriteLine();
 
-            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Nome", "Tralaleiro", "Tralala");
+            Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", "Id", "Data da Requisição", "CRM do Médico Vigente", "Medicamentos Prescritos");
 
             List<Prescricao> registros = repositorioPrescricao.SelecionarRegistros();
 
             foreach (var e in registros)
             {
-                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id);
+                Console.WriteLine("{0, -10} | {1, -30} | {2, -20} | {3, -20}", e.Id, e.Data, e.CrmMedico, CarregarMedicamentosEmString(e));
             }
 
             Console.WriteLine();
@@ -164,6 +165,21 @@ namespace ControleDeMedicamentosAP.ModuloSaida
 
             return true;
         
+        }
+
+        public string CarregarMedicamentosEmString(Prescricao e)
+        {
+            string allMeds = "";
+            int sizeOfList = e.Medicamentos.Count;
+
+            for (int i = 0; i < sizeOfList; i++)
+            {
+                string newMed;
+                newMed = e.Medicamentos[i].Nome;
+                allMeds += newMed + ", ";
+            }
+
+            return allMeds;
         }
     }
 }

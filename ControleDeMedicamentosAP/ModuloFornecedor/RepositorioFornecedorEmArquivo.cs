@@ -11,7 +11,7 @@ public class RepositorioFornecedorEmArquivo : RepositorioBaseEmArquivo<Fornecedo
 
     protected override List<Fornecedor> ObterRegistros()
     {
-        return new List<Fornecedor>();
+        return contexto.Fornecedores;
     }
 
 }

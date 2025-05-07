@@ -1,6 +1,6 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using ControleDeMedicamentosAP.Compartilhada;
-using ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentosAP.ModuloMedicamento;
 
 namespace ControleDeMedicamentosAP.ModuloMedicamento
 {
@@ -9,7 +9,7 @@ namespace ControleDeMedicamentosAP.ModuloMedicamento
         public RepositorioMedicamentoEmArquivo(ContextoDados contexto) : base(contexto) { }
         protected override List<Medicamento> ObterRegistros()
         {
-            return new List<Medicamento>();
+            return contexto.Medicamentos;
         }
     }
 }

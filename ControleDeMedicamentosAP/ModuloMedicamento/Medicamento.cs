@@ -1,7 +1,6 @@
 ﻿using ControleDeMedicamentosAP.Compartilhada;
 using ControleDeMedicamentosAP.ModuloFornecedor;
-using ControleDeMedicamentosAP.ModuloFuncionario;
-namespace ControleDeMedicamentosAP.ConsoleApp.ModuloMedicamento;
+namespace ControleDeMedicamentosAP.ModuloMedicamento;
 
 public class Medicamento : EntidadeBase<Medicamento>
 {

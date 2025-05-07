@@ -7,7 +7,6 @@ using ControleDeMedicamentosAP.ModuloPaciente;
 using ControleDeMedicamentosAP.ModuloPrescricao;
 using ControleDeMedicamentosAP.ModuloSaida;
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-using System.Runtime.CompilerServices;
 
 
 namespace ControleDeMedicamentosAP.Util;
@@ -72,9 +71,9 @@ public class TelaPrincipal
         Console.WriteLine("2 - Controle de Pacientes");
         Console.WriteLine("3 - Controle de Medicamentos ");
         Console.WriteLine("4 - Controle de Funcionários");
-        Console.WriteLine("5 - Requisições de Saída");
-        Console.WriteLine("6 - Requisições de Entrada");
-        Console.WriteLine("7 - Controle de Prescrições");
+        Console.WriteLine("5 - Requisições de Entrada");
+        Console.WriteLine("6 - Requisições de Prescrições");
+        Console.WriteLine("7 - Controle de Saída");
         Console.WriteLine();
         Console.WriteLine("S - Sair");
 
@@ -99,15 +98,18 @@ public class TelaPrincipal
             return telaFuncionario;
 
         else if (opcaoPrincipal == '5')
-            return telaSaida;
-
-        else if (opcaoPrincipal == '6')
             return telaEntrada;
 
-        else if (opcaoPrincipal == '7')            
+        else if (opcaoPrincipal == '6')
             return telaPrescricao;
 
+        else if (opcaoPrincipal == '7')            
+            return telaSaida;
+
         else if (opcaoPrincipal == 'S')
+            Environment.Exit(0);
+
+        else if (opcaoPrincipal == 's')
             Environment.Exit(0);
 
         return null!;

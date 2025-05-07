@@ -1,6 +1,5 @@
 ﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 
-
 namespace ControleDeMedicamentosAP.ModuloPaciente
 {
     internal class TelaPaciente : TelaBase<Paciente>, ITelaCrud
