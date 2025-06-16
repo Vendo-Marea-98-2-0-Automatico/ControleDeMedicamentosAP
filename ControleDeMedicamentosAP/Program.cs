@@ -1,43 +1,20 @@
-﻿using ControleDeMedicamentosAP.ModuloMedicamento;
-using ControleDeMedicamentosAP.Util;
-using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-
-namespace ControleDeMedicamentosAP
+﻿namespace ControleDeMedicamentos.ConsoleApp
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-            while (true)
-            {
-                telaPrincipal.ApresentarMenuPrincipal();
+            builder.Services.AddControllersWithViews();
 
-                ITelaCrud telaSelecionada = telaPrincipal.ObterTela();
+            WebApplication app = builder.Build();
 
-                char opcaoEscolhida = telaSelecionada.ApresentarMenu();
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.MapControllers();
 
-                switch (opcaoEscolhida)
-                {
-                    case '1': telaSelecionada.CadastrarRegistro(); break;
-
-                    case '2': telaSelecionada.EditarRegistro(); break;
-
-                    case '3': telaSelecionada.ExcluirRegistro(); break;
-
-                    case '4': telaSelecionada.VisualizarRegistros(true); break;
-
-                    case '5':
-                        if (telaSelecionada is TelaMedicamento telaMedicamento)
-                            telaMedicamento.ReporEstoqueMedicamento();
-                        else
-                            Notificador.ExibirMensagem("Essa opção não está disponível para o módulo selecionado.", ConsoleColor.Red);
-                        break;
-                    default: break;
-                }
-            }
+            app.Run();
         }
     }
 }
-

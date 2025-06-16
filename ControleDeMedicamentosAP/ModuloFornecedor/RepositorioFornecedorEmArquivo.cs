@@ -1,7 +1,6 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
-using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
-namespace ControleDeMedicamentosAP.ModuloFornecedor;
+namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedor;
 
 public class RepositorioFornecedorEmArquivo : RepositorioBaseEmArquivo<Fornecedor>, IRepositorioFornecedor
 {
@@ -13,5 +12,4 @@ public class RepositorioFornecedorEmArquivo : RepositorioBaseEmArquivo<Fornecedo
     {
         return contexto.Fornecedores;
     }
-
 }

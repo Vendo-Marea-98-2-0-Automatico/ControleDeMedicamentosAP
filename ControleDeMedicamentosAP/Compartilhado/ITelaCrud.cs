@@ -1,8 +1,8 @@
-﻿namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public interface ITelaCrud
 {
-    char ApresentarMenu();
+    string ApresentarMenu();
     void CadastrarRegistro();
     void EditarRegistro();
     void ExcluirRegistro();

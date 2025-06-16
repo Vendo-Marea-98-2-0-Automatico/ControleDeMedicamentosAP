@@ -1,38 +1,36 @@
-﻿using System.Text.Json.Serialization;
+﻿using ControleDeMedicamentos.ConsoleApp.ModuloFornecedor;
+using ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
+using ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
+using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+using ControleDeMedicamentos.ConsoleApp.ModuloPrescricao;
+using ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoMedicamento;
 using System.Text.Json;
-using ControleDeMedicamentosAP.ModuloFornecedor;
-using ControleDeMedicamentosAP.ModuloFuncionario;
-using ControleDeMedicamentosAP.ModuloMedicamento;
-using ControleDeMedicamentosAP.ModuloEntrada;
-using ControleDeMedicamentosAP.ModuloPaciente;
-using ControleDeMedicamentosAP.ModuloPrescricao;
-using ControleDeMedicamentosAP.ModuloSaida;
+using System.Text.Json.Serialization;
 
-
-namespace ControleDeMedicamentosAP.Compartilhada;
+namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public class ContextoDados
 {
     private string pastaArmazenamento = "C:\\temp";
-    private string arquivoArmazenamento = "dados.json";
+    private string arquivoArmazenamento = "dados-controle-medicamento.json";
 
-    public List<Fornecedor> Fornecedores { get; set; }    
-    public List<Medicamento> Medicamentos { get; set; }
+    public List<Fornecedor> Fornecedores { get; set; }
+    public List<Paciente> Pacientes { get; set; }
     public List<Funcionario> Funcionarios { get; set; }
-    public List<Entrada> Entradas { get; set; }    
-    public List<Paciente> Pacientes { get;  set; }
+    public List<Medicamento> Medicamentos { get; set; }
+    public List<RequisicaoEntrada> RequisicoesEntrada { get; set; }
+    public List<RequisicaoSaida> RequisicoesSaida { get; set; }
     public List<Prescricao> Prescricoes { get; set; }
-    public List<Saida> Saidas { get; set; }
 
     public ContextoDados()
     {
-        Fornecedores = new List<Fornecedor>();        
-        Medicamentos = new List<Medicamento>();
-        Funcionarios = new List<Funcionario>();
-        Entradas = new List<Entrada>();
+        Fornecedores = new List<Fornecedor>();
         Pacientes = new List<Paciente>();
+        Funcionarios = new List<Funcionario>();
+        Medicamentos = new List<Medicamento>();
+        RequisicoesEntrada = new List<RequisicaoEntrada>();
+        RequisicoesSaida = new List<RequisicaoSaida>();
         Prescricoes = new List<Prescricao>();
-        Saidas = new List<Saida>();
     }
 
     public ContextoDados(bool carregarDados) : this()
@@ -70,20 +68,20 @@ public class ContextoDados
         JsonSerializerOptions jsonOptions = new JsonSerializerOptions();
         jsonOptions.ReferenceHandler = ReferenceHandler.Preserve;
 
-        ContextoDados contextoArmazenado = JsonSerializer.Deserialize<ContextoDados>(json, jsonOptions)!;
+        ContextoDados contextoArmazenado = JsonSerializer.Deserialize<ContextoDados>(
+            json,
+            jsonOptions
+        )!;
 
         if (contextoArmazenado == null) return;
 
-        this.Fornecedores = contextoArmazenado.Fornecedores;        
-        this.Medicamentos = contextoArmazenado.Medicamentos;
-        this.Funcionarios = contextoArmazenado.Funcionarios;
-        this.Entradas = contextoArmazenado.Entradas;
-        this.Pacientes = contextoArmazenado.Pacientes;
-        this.Prescricoes = contextoArmazenado.Prescricoes;
-        this.Saidas = contextoArmazenado.Saidas;
+        Fornecedores = contextoArmazenado.Fornecedores;
+        Pacientes = contextoArmazenado.Pacientes;
+        Funcionarios = contextoArmazenado.Funcionarios;
 
-        
-        
-        
+        Medicamentos = contextoArmazenado.Medicamentos;
+        RequisicoesEntrada = contextoArmazenado.RequisicoesEntrada;
+        RequisicoesSaida = contextoArmazenado.RequisicoesSaida;
+        Prescricoes = contextoArmazenado.Prescricoes;
     }
 }

@@ -1,22 +1,15 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
-using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
-namespace ControleDeMedicamentosAP.ModuloFuncionario
+namespace ControleDeMedicamentos.ConsoleApp.ModuloFuncionario;
+
+public class RepositorioFuncionarioEmArquivo : RepositorioBaseEmArquivo<Funcionario>, IRepositorioFuncionario
 {
-    public class RepositorioFuncionarioEmArquivo : RepositorioBaseEmArquivo<Funcionario>, IRepositorioFuncionario
+    public RepositorioFuncionarioEmArquivo(ContextoDados contexto) : base(contexto)
     {
-        public RepositorioFuncionarioEmArquivo(ContextoDados contexto) : base(contexto)
-        {
-        }
+    }
 
-        protected override List<Funcionario> ObterRegistros()
-        {
-            return contexto.Funcionarios;
-        }
+    protected override List<Funcionario> ObterRegistros()
+    {
+        return contexto.Funcionarios;
     }
 }

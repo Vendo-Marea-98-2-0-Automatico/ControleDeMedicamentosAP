@@ -1,4 +1,5 @@
-﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
-namespace ControleDeMedicamentosAP.ModuloPaciente;
+namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+
 public interface IRepositorioPaciente : IRepositorio<Paciente>;

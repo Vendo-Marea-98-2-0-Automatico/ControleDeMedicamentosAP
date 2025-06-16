@@ -1,43 +1,27 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
-
-namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase<T>
 {
-    private List<T> registros = new List<T>();
-    private int contadorIds = 0;
-
     protected ContextoDados contexto;
+    protected List<T> registros = new List<T>();
 
     protected RepositorioBaseEmArquivo(ContextoDados contexto)
     {
         this.contexto = contexto;
 
         registros = ObterRegistros();
-
-        int maiorId = 0;
-
-        foreach (var registro in registros)
-        {
-            if (registro.Id > maiorId)
-                maiorId = registro.Id;
-        }
-
-        contadorIds = maiorId;
     }
 
     protected abstract List<T> ObterRegistros();
 
     public void CadastrarRegistro(T novoRegistro)
     {
-        novoRegistro.Id = ++contadorIds;
-
         registros.Add(novoRegistro);
 
         contexto.Salvar();
     }
 
-    public bool EditarRegistro(int idRegistro, T registroEditado)
+    public bool EditarRegistro(Guid idRegistro, T registroEditado)
     {
         foreach (T item in registros)
         {
@@ -54,7 +38,7 @@ public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase<T>
         return false;
     }
 
-    public bool ExcluirRegistro(int idRegistro)
+    public bool ExcluirRegistro(Guid idRegistro)
     {
         T registroSelecionado = SelecionarRegistroPorId(idRegistro);
 
@@ -75,7 +59,7 @@ public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase<T>
         return registros;
     }
 
-    public T SelecionarRegistroPorId(int idRegistro)
+    public T SelecionarRegistroPorId(Guid idRegistro)
     {
         foreach (T item in registros)
         {
@@ -83,8 +67,6 @@ public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase<T>
                 return item;
         }
 
-        return null!;
+        return null;
     }
-
-    
 }

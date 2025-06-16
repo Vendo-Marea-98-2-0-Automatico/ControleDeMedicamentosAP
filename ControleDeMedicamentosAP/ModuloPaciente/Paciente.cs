@@ -1,7 +1,7 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 using System.Text.RegularExpressions;
 
-namespace ControleDeMedicamentosAP.ModuloPaciente;
+namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
 public class Paciente : EntidadeBase<Paciente>
 {
@@ -9,13 +9,11 @@ public class Paciente : EntidadeBase<Paciente>
     public string Telefone { get; set; }
     public string CartaoSus { get; set; }
 
+    public Paciente() { }
 
-public Paciente()
+    public Paciente(string nome, string telefone, string cartaoSus) : this()
     {
-
-    }
-    public Paciente(string nome, string telefone, string cartaoSus)
-    {
+        Id = Guid.NewGuid();
         Nome = nome;
         Telefone = telefone;
         CartaoSus = cartaoSus;
@@ -23,9 +21,9 @@ public Paciente()
 
     public override void AtualizarRegistro(Paciente registroEditado)
     {
-        Nome += registroEditado.Nome;
-        Telefone += registroEditado.Telefone;
-        CartaoSus += registroEditado.CartaoSus;
+        Nome = registroEditado.Nome;
+        Telefone = registroEditado.Telefone;
+        CartaoSus = registroEditado.CartaoSus;
     }
 
     public override string Validar()
@@ -33,17 +31,16 @@ public Paciente()
         string erros = "";
 
         if (string.IsNullOrWhiteSpace(Nome))
-            erros += "O campo 'Nome' é obrigatório. \n";
+            erros += "O campo 'Nome' é obrigatório.\n";
 
         if (Nome.Length < 3 || Nome.Length > 100)
-            erros += "O campo 'Nome' deve conter entre 3 e 100 caracteres \n ";
+            erros += "O campo 'Nome' deve conter entre 3 e 100 caracteres.\n";
 
-        if (!Regex.IsMatch(Telefone, @"^^\(\d{2}\)\s?(9\d{4}|\d{4})-\d{4}$"))
-            erros += "O campo 'Telefone'deve seguir o padrão (DDD) 0000-0000 ou (DDD) 00000-0000. \n ";
+        if (!Regex.IsMatch(Telefone, @"^\(?\d{2}\)?\s?(9\d{4}|\d{4})-?\d{4}$"))
+            erros += "O campo 'Telefone' é deve seguir o padrão (DDD) 0000-0000 ou (DDD) 00000-0000.\n";
 
         if (!Regex.IsMatch(CartaoSus, @"^\d{15}$"))
-            erros += "O campo 'Cartão SUS ' precisa conter 15 números.\n";
-
+            erros += "O campo 'Cartão do Sus' é precisa conter 15 números.\n";
 
         return erros;
     }

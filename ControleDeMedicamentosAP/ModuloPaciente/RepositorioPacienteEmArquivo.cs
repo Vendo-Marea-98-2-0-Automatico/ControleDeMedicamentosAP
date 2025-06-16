@@ -1,7 +1,6 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
-using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
-namespace ControleDeMedicamentosAP.ModuloPaciente;
+namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
 
 public class RepositorioPacienteEmArquivo : RepositorioBaseEmArquivo<Paciente>, IRepositorioPaciente
 {

@@ -1,6 +1,4 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
-using ControleDeMedicamentosAP.ModuloPrescricao;
-using ControleDeMedicamentosAP.Util;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 

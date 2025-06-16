@@ -1,15 +1,13 @@
-﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
-using ControleDeMedicamentosAP.Compartilhada;
-using ControleDeMedicamentosAP.ModuloMedicamento;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
-namespace ControleDeMedicamentosAP.ModuloMedicamento
+namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
+
+public class RepositorioMedicamentoEmArquivo : RepositorioBaseEmArquivo<Medicamento>, IRepositorioMedicamento
 {
-    public class RepositorioMedicamentoEmArquivo : RepositorioBaseEmArquivo<Medicamento>, IRepositorioMedicamento
+    public RepositorioMedicamentoEmArquivo(ContextoDados contexto) : base(contexto) { }
+
+    protected override List<Medicamento> ObterRegistros()
     {
-        public RepositorioMedicamentoEmArquivo(ContextoDados contexto) : base(contexto) { }
-        protected override List<Medicamento> ObterRegistros()
-        {
-            return contexto.Medicamentos;
-        }
+        return contexto.Medicamentos;
     }
 }

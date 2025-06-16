@@ -1,0 +1,10 @@
+@using ControleDeMedicamentos.ConsoleApp.Model
+
+@model NotificacaoViewModel;
+
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = Model.Titulo;
+}
+
+<p>@Model.Mensagem</p>

@@ -1,48 +1,28 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
-using ControleDeMedicamentosAP.ModuloMedicamento;
+﻿using ControleDeMedicamentos.ConsoleApp.ModuloPaciente;
+using System.Diagnostics.CodeAnalysis;
 
+namespace ControleDeMedicamentos.ConsoleApp.ModuloPrescricao;
 
-namespace ControleDeMedicamentosAP.ModuloPrescricao
+public class Prescricao
 {
-    public class Prescricao : EntidadeBase<Prescricao>
+    public Guid Id { get; set; }
+
+    public string CrmMedico { get; set; }
+    public DateTime DataEmissao { get; set; }
+    public Paciente Paciente { get; set; }
+
+    public List<MedicamentoPrescrito> MedicamentoPrescritos { get; set; }
+
+    [ExcludeFromCodeCoverage]
+    public Prescricao() { }
+
+    public Prescricao(string crmMedico, Paciente paciente, List<MedicamentoPrescrito> medicamentoPrescritos)
     {
-        public string CrmMedico { get; set; }
-        public DateTime Data { get; set; }
-        public List<Medicamento> Medicamentos { get; set; }
-        public Prescricao() { }
-        
-        public Prescricao(string crmMedico, DateTime data)
-        {
-            CrmMedico = crmMedico;
-            Data = data;
-            Medicamentos = new List<Medicamento>();
-        }
+        Id = Guid.NewGuid();
+        DataEmissao = DateTime.Now;
+        CrmMedico = crmMedico;
 
-        public override void AtualizarRegistro(Prescricao registroEditado)
-        {
-            CrmMedico = registroEditado.CrmMedico;
-            Data = registroEditado.Data;
-            Medicamentos = registroEditado.Medicamentos;
-        }
-
-        public override string Validar()
-        {
-            if (string.IsNullOrWhiteSpace(CrmMedico))
-                return "O campo CRM é obrigatório.";
-
-            if (CrmMedico.Length != 6 || !CrmMedico.All(char.IsDigit))
-                return "O CRM deve conter exatamente 6 dígitos numéricos.";
-
-            if (Medicamentos == null || Medicamentos.Count == 0)
-                return "É necessário informar pelo menos um medicamento.";
-
-            return string.Empty; 
-        }
-
-        public override string ToString()
-        {
-            string lista = string.Join("\n", Medicamentos.Select(m => $"- {m}"));
-            return $"ID: {Id} | CRM: {CrmMedico} | Data: {Data:d}\nMedicamentos:\n{lista}";
-        }
+        Paciente = paciente;
+        MedicamentoPrescritos = medicamentoPrescritos;
     }
 }

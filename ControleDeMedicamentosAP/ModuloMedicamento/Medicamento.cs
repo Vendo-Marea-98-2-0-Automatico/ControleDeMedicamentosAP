@@ -1,46 +1,92 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
-using ControleDeMedicamentosAP.ModuloFornecedor;
-namespace ControleDeMedicamentosAP.ModuloMedicamento;
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+using ControleDeMedicamentos.ConsoleApp.ModuloFornecedor;
+using System.Diagnostics.CodeAnalysis;
+
+namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamento;
 
 public class Medicamento : EntidadeBase<Medicamento>
 {
     public string Nome { get; set; }
     public string Descricao { get; set; }
-    public int QuantidadeMedicamento { get; set; }
-    public int QuantidadeMedicamentoPresc {  get; set; }
-    public string Dosagem { get; set; }
-    public string Periodo { get; set; }
     public Fornecedor Fornecedor { get; set; }
-    public Medicamento() { }
-    public Medicamento(string nome, string descricao, int quantidadeMedicamento, Fornecedor fornecedor)
+    public List<RequisicaoEntrada> RequisicoesEntrada { get; set; }
+    public List<RequisicaoSaida> RequisicoesSaida { get; set; }
+
+    public int QuantidadeEmEstoque
     {
+        get
+        {
+            int quantidadeEmEstoque = 0;
+
+            foreach (var req in RequisicoesEntrada)
+                quantidadeEmEstoque += req.QuantidadeRequisitada;
+
+            foreach (var req in RequisicoesSaida)
+            {
+                foreach (var med in req.Prescricao.MedicamentoPrescritos)
+                    quantidadeEmEstoque -= med.Quantidade;
+            }
+
+            return quantidadeEmEstoque;
+        }
+    }
+
+    public bool EmFalta
+    {
+        get { return QuantidadeEmEstoque < 20; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public Medicamento()
+    {
+        RequisicoesEntrada = new List<RequisicaoEntrada>();
+        RequisicoesSaida = new List<RequisicaoSaida>();
+    }
+
+    public Medicamento(
+        string nome,
+        string descricao,
+        Fornecedor fornecedor
+    ) : this()
+    {
+        Id = Guid.NewGuid();
         Nome = nome;
         Descricao = descricao;
-        QuantidadeMedicamento = quantidadeMedicamento;
         Fornecedor = fornecedor;
     }
+
+    public void AdicionarAoEstoque(RequisicaoEntrada requisicaoEntrada)
+    {
+        if (!RequisicoesEntrada.Contains(requisicaoEntrada))
+            RequisicoesEntrada.Add(requisicaoEntrada);
+    }
+
+    public void RemoverDoEstoque(RequisicaoSaida requisicaoSaida)
+    {
+        if (!RequisicoesSaida.Contains(requisicaoSaida))
+            RequisicoesSaida.Add(requisicaoSaida);
+    }
+
     public override void AtualizarRegistro(Medicamento registroEditado)
     {
         Nome = registroEditado.Nome;
         Descricao = registroEditado.Descricao;
-        QuantidadeMedicamento = registroEditado.QuantidadeMedicamento;
+        Fornecedor = registroEditado.Fornecedor;
     }
+
     public override string Validar()
     {
-        string erros = "";
+        string erros = string.Empty;
 
-        if (string.IsNullOrWhiteSpace(Nome))
-            erros += "O campo 'Nome' é obrigatório.\n";
-        if (Nome.Length < 3 || Nome.Length > 100)
-            erros += "O campo 'Nome' deve possuir de 3 a 100 caracteres.\n";
+        if (string.IsNullOrEmpty(Nome.Trim()))
+            erros += "O campo \"Nome\" é obrigatório.";
 
-        if (Descricao.Length < 3 || Descricao.Length > 255)
-            erros += "O campo 'Descrição' deve possuir de 5 a 255 caracteres.\n";
+        if (string.IsNullOrEmpty(Descricao.Trim()))
+            erros += "O campo \"Descrição\" é obrigatório.";
 
-        if (QuantidadeMedicamento <= 0)
-            erros += "A quantidade de medicamentos a ser cadastrada deve ser maior que 0 e positiva.\n";
+        if (Fornecedor == null)
+            erros += "O campo \"Fornecedor\" é obrigatório.";
 
-        return erros.Trim();
+        return erros;
     }
 }
-

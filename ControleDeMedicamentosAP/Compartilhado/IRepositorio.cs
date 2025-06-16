@@ -1,13 +1,14 @@
-﻿using ControleDeMedicamentosAP.Compartilhada;
-
-namespace GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+﻿namespace ControleDeMedicamentos.ConsoleApp.Compartilhado;
 
 public interface IRepositorio<T> where T : EntidadeBase<T>
 {
     public void CadastrarRegistro(T novoRegistro);
-    public bool EditarRegistro(int idRegistro, T registroEditado);
-    public bool ExcluirRegistro(int idRegistro);
+
+    public bool EditarRegistro(Guid idRegistro, T registroEditado);
+
+    public bool ExcluirRegistro(Guid idRegistro);
+
     public List<T> SelecionarRegistros();
-    public T SelecionarRegistroPorId(int idRegistro);
-    
+
+    public T SelecionarRegistroPorId(Guid idRegistro);
 }
